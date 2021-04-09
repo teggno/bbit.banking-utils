@@ -5,17 +5,15 @@ export class BbitBankingReference {
       return false;
     }
 
-    // Implement the correct check here
-
-    const check = reference.substr(reference.length - 1);
-    const calculated = BbitMod10.calc(reference.substr(0, reference.length - 1));
-    return check === calculated.toString();
+    const iso11649 = require('node-iso11649');
+    return iso11649.validate(reference);
   }
 
   public isQRReferenceValid(reference: string): boolean {
     if (!reference || reference.length !== 27) {
       return false;
     }
+    
     const check = reference.substr(reference.length - 1);
     const calculated = BbitMod10.calc(reference.substr(0, reference.length - 1));
     return check === calculated.toString();
