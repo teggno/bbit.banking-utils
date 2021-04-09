@@ -7,16 +7,16 @@ class BbitBankingReference {
         if (!reference || reference.length > 25) {
             return false;
         }
-        const check = reference.substr(reference.length - 1);
-        const calculated = mod10_1.BbitMod10.calc(reference.substr(0, reference.length - 1));
-        return check === calculated.toString();
+        const iso11649 = require('node-iso11649');
+        return iso11649.validate(reference);
     }
     isQRReferenceValid(reference) {
         if (!reference || reference.length !== 27) {
             return false;
         }
-        const iso11649 = require('node-iso11649');
-        return iso11649.validate(reference);
+        const check = reference.substr(reference.length - 1);
+        const calculated = mod10_1.BbitMod10.calc(reference.substr(0, reference.length - 1));
+        return check === calculated.toString();
     }
     isQRReference(reference) {
         return reference && !reference.startsWith('RF');
