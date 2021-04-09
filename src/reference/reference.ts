@@ -35,8 +35,15 @@ export class BbitBankingReference {
         reference.substr(22, 5),
       ].join(' ');
     } else {
-      // implement this
-      return 'TODO';
+      return [
+        reference.substr(0, 4),
+        reference.substr(5, 4),
+        reference.substr(12, 4),
+        reference.substr(12, 4),
+        reference.substr(16, 4),
+        reference.substr(20, 4),
+        reference.substr(24, 4),
+      ].join(' ').trim();
     }
   }
 }
