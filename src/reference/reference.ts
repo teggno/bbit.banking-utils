@@ -37,8 +37,8 @@ export class BbitBankingReference {
     } else {
       return [
         reference.substr(0, 4),
-        reference.substr(5, 4),
-        reference.substr(12, 4),
+        reference.substr(4, 4),
+        reference.substr(8, 4),
         reference.substr(12, 4),
         reference.substr(16, 4),
         reference.substr(20, 4),
